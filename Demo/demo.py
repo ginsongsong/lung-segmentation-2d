@@ -51,7 +51,8 @@ def masked(img, gt, mask, alpha=1):
     filled with blue."""
     rows, cols = img.shape
     color_mask = np.zeros((rows, cols, 3))
-    boundary = morphology.dilation(gt, morphology.disk(3)) - gt
+    #boundary = morphology.dilation(gt, morphology.disk(3)) - gt
+    boundary = np.subtract( morphology.dilation(gt, morphology.disk(3)) ,gt, dtype= np.float32)
     color_mask[mask == 1] = [0, 0, 1]
     color_mask[boundary == 1] = [1, 0, 0]
     img_color = np.dstack((img, img, img))
