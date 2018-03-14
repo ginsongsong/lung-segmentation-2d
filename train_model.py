@@ -18,8 +18,9 @@ if __name__ == '__main__':
     # Shuffle rows in dataframe. Random state is set for reproducibility.
     df = df.sample(frac=1, random_state=23)
     n_train = int(len(df))
+    new_df=random.randint(1,n_train)
     df_train = df[:n_train]
-    df_val = df[n_train:]
+    df_val = df[new_df:]
 
     # Load training and validation data
     im_shape = (256, 256)
